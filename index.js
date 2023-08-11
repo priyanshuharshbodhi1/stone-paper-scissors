@@ -1,6 +1,22 @@
 const openRulesButton = document.getElementById("openRulesButton");
 const gameRulesPopup = document.getElementById("gameRulesPopup");
 const closeButton = document.getElementById("closeButton");
+const resetButton = document.querySelector(".lower-panel button:first-child");
+
+resetButton.addEventListener("click", () => {
+  resetGame();
+});
+
+function resetGame() {
+  playerScore = 0;
+  computerScore = 0;
+  updateScore();
+  hands.forEach((hand) => (hand.style.display = "block"));
+  if (resultPanel.parentNode) {
+    mainContainer.removeChild(resultPanel);
+  }
+  clearBorders(); // Clear existing borders
+}
 
 openRulesButton.addEventListener("click", () => {
   gameRulesPopup.style.display = "block";
@@ -73,68 +89,71 @@ function getComputerChoice() {
 }
 
 function clearBorders() {
-    hands.forEach((hand) => hand.classList.remove('selected', 'computer-selected'));
-  }
+  hands.forEach((hand) =>
+    hand.classList.remove("selected", "computer-selected")
+  );
+}
 
 // Compare choices and update scores
 function compareChoices(playerChoice, computerChoice) {
-    clearBorders(); // Clear existing borders
-  
-    // Add green border to player's selected hand
-    const playerHand = document.querySelector(`.hand.${playerChoice}`);
-    playerHand.classList.add('selected');
-  
-    // Add border to computer's selected hand
-    const computerHand = document.querySelector(`.hand.${computerChoice}`);
-    computerHand.classList.add('computer-selected');
-  
-    if (playerChoice === computerChoice) {
-      return;
-    }
-    if (
-      (playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "paper" && computerChoice === "rock") ||
-      (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-      playerScore++;
-    } else {
-      computerScore++;
-    }
-    updateScore();
+  if (playerScore >= 10 || computerScore >= 10) {
+    return; // Game is already won, no need to update scores
   }
+  clearBorders(); // Clear existing borders
 
-  function animateHands(playerChoice, computerChoice) {
-    const playerOverlay = document.createElement("div");
-    playerOverlay.classList.add("hand-overlay", "left");
-    playerOverlay.innerHTML = `YOUR CHOICE <br> <img src="/assets/${playerChoice}.png" class="hand ${playerChoice}" />`;
-    playerOverlay.style.textAlign = "center";
-    playerOverlay.style.color = "#fff";
-    playerOverlay.style.marginLeft = "1rem";
+  // Add green border to player's selected hand
+  const playerHand = document.querySelector(`.hand.${playerChoice}`);
+  playerHand.classList.add("selected");
 
-    const computerOverlay = document.createElement("div");
-    computerOverlay.classList.add("hand-overlay", "right");
-    computerOverlay.innerHTML = `AI'S CHOICE <br> <img src="/assets/${computerChoice}.png" class="hand ${computerChoice}" />`;
-    computerOverlay.style.textAlign = "center";
-    computerOverlay.style.color = "#fff";
-    computerOverlay.style.marginRight = "1rem";
+  // Add border to computer's selected hand
+  const computerHand = document.querySelector(`.hand.${computerChoice}`);
+  computerHand.classList.add("computer-selected");
 
+  if (playerChoice === computerChoice) {
+    return;
+  }
+  if (
+    (playerChoice === "rock" && computerChoice === "scissors") ||
+    (playerChoice === "paper" && computerChoice === "rock") ||
+    (playerChoice === "scissors" && computerChoice === "paper")
+  ) {
+    playerScore++;
+  } else {
+    computerScore++;
+  }
+  updateScore();
+}
 
-    mainContainer.appendChild(playerOverlay);
-    mainContainer.appendChild(computerOverlay);
-  
+function animateHands(playerChoice, computerChoice) {
+  const playerOverlay = document.createElement("div");
+  playerOverlay.classList.add("hand-overlay", "left");
+  playerOverlay.innerHTML = `YOUR CHOICE <br> <img src="/assets/${playerChoice}.png" class="hand ${playerChoice}" />`;
+  playerOverlay.style.textAlign = "center";
+  playerOverlay.style.color = "#fff";
+  playerOverlay.style.marginLeft = "1rem";
+
+  const computerOverlay = document.createElement("div");
+  computerOverlay.classList.add("hand-overlay", "right");
+  computerOverlay.innerHTML = `AI'S CHOICE <br> <img src="/assets/${computerChoice}.png" class="hand ${computerChoice}" />`;
+  computerOverlay.style.textAlign = "center";
+  computerOverlay.style.color = "#fff";
+  computerOverlay.style.marginRight = "1rem";
+
+  mainContainer.appendChild(playerOverlay);
+  mainContainer.appendChild(computerOverlay);
+
+  setTimeout(() => {
+    playerOverlay.classList.add("show");
+    computerOverlay.classList.add("show");
+
     setTimeout(() => {
-      playerOverlay.classList.add("show");
-      computerOverlay.classList.add("show");
-  
-      setTimeout(() => {
-        mainContainer.removeChild(playerOverlay);
-        mainContainer.removeChild(computerOverlay);
-        compareChoices(playerChoice, computerChoice);
-      }, 1000);
-    }, 10);
-  }
-  
-  
+      mainContainer.removeChild(playerOverlay);
+      mainContainer.removeChild(computerOverlay);
+      compareChoices(playerChoice, computerChoice);
+    }, 1000);
+  }, 10);
+}
+
 // Add click event listeners to hands
 hands.forEach((hand) => {
   hand.addEventListener("click", () => {
