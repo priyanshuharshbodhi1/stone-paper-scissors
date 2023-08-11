@@ -3,6 +3,9 @@ const gameRulesPopup = document.getElementById("gameRulesPopup");
 const closeButton = document.getElementById("closeButton");
 const resetButton = document.querySelector(".lower-panel button:first-child");
 
+
+
+
 resetButton.addEventListener("click", () => {
   resetGame();
 });
@@ -26,6 +29,8 @@ closeButton.addEventListener("click", () => {
   gameRulesPopup.style.display = "none";
 });
 
+
+
 const hands = document.querySelectorAll(".hand");
 const playerScoreElement = document.querySelector(
   ".player-score .score-number"
@@ -37,16 +42,17 @@ const lowerPanel = document.querySelector(".lower-panel");
 const resultPanel = document.createElement("div");
 resultPanel.classList.add("result-panel");
 const mainContainer = document.querySelector(".main-container");
-// const lowerPanel = document.querySelector('.lower-panel');
 
 // Game state
-let playerScore = 0;
-let computerScore = 0;
+// let playerScore = 0;
+// let computerScore = 0;
 
 // Update the player and computer scores
 function updateScore() {
   playerScoreElement.textContent = playerScore;
   computerScoreElement.textContent = computerScore;
+  saveScores();
+
 
   if (playerScore >= 10 || computerScore >= 10) {
     hands.forEach((hand) => (hand.style.display = "none"));
@@ -68,6 +74,8 @@ function updateScore() {
 
     resultPanel.appendChild(playAgainButton);
     mainContainer.insertBefore(resultPanel, lowerPanel);
+
+    saveScores();
   }
 }
 
@@ -80,6 +88,10 @@ function resetGame() {
   if (resultPanel.parentNode) {
     mainContainer.removeChild(resultPanel);
   }
+
+  // Clear scores from local storage when game resets
+  localStorage.removeItem("playerScore");
+  localStorage.removeItem("computerScore");
 }
 
 // Computer's random choice
@@ -100,15 +112,7 @@ function compareChoices(playerChoice, computerChoice) {
   if (playerScore >= 10 || computerScore >= 10) {
     return; // Game is already won, no need to update scores
   }
-  clearBorders(); // Clear existing borders
 
-  // Add green border to player's selected hand
-  const playerHand = document.querySelector(`.hand.${playerChoice}`);
-  playerHand.classList.add("selected");
-
-  // Add border to computer's selected hand
-  const computerHand = document.querySelector(`.hand.${computerChoice}`);
-  computerHand.classList.add("computer-selected");
   if (playerChoice === computerChoice) {
     return;
   }
@@ -159,7 +163,6 @@ hands.forEach((hand) => {
   hand.addEventListener("click", () => {
     const playerChoice = hand.classList[1]; // rock, paper, scissors
     const computerChoice = getComputerChoice();
-    // compareChoices(playerChoice, computerChoice);
 
     animateHands(playerChoice, computerChoice);
   });
@@ -167,3 +170,27 @@ hands.forEach((hand) => {
 
 // Initialize the game
 resetGame();
+
+loadScores();
+
+// Load scores from local storage
+function loadScores() {
+  const savedPlayerScore = localStorage.getItem("playerScore");
+  const savedComputerScore = localStorage.getItem("computerScore");
+  if (savedPlayerScore !== null && savedComputerScore !== null) {
+    playerScore = parseInt(savedPlayerScore);
+    computerScore = parseInt(savedComputerScore);
+    updateScore();
+  }
+}
+
+// Save scores to local storage
+function saveScores() {
+  localStorage.setItem("playerScore", playerScore);
+  localStorage.setItem("computerScore", computerScore);
+}
+
+window.addEventListener("load", () => {
+  loadScores();
+});
+
