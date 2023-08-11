@@ -4,31 +4,78 @@
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  background: radial-gradient(circle, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 }
 
-
 .main-container {
-    display: flex;
-    flex-direction: column;
-    background: #8CC461;
+  display: flex;
+  flex-direction: column;
 }
 
 .score-panel {
-    display: flex;
+  display: flex;
   border-radius: 0.8125rem;
   border: 2px solid #fff;
-  background: #1c307800;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .header {
-    color: #FFF;
-font-size: 1.5rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.1rem;
+  margin-top: 3px;
+}
+
+.score {
+    border-radius: 8px;
+    background: #fff;
+    text-align: center;
+    width: 5.6rem;
+    margin: 0.2rem;
+    padding: 0.3rem;
+}
+
+.score-title{
+    color: #656565;
+font-size: 0.8rem;
 font-style: normal;
 font-weight: 600;
 line-height: normal;
-letter-spacing: 0.25rem;
+letter-spacing: .1rem;
+}
+
+.score-number{
+    color: #252525;
+text-align: center;
+font-size: 2.4rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.lower-panel {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin: 1rem;
+}
+
+button {
+  border-radius: 8px;
+  border: 1.9px solid #fff;
+  background: rgba(217, 217, 217, 0);
+  color: #fff;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 3.5px 12px;
 }
