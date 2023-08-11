@@ -62,40 +62,39 @@ body {
   line-height: normal;
 }
 
-
 .hands {
-    position: relative;
-    width: 320px;
-    display: flex;
-    z-index: 0;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: 30px;
-    margin-top: 50px;
-  }
-  .hands img {
-    width: 100px;
-    height: 100px;
-    display: block;
-  }
-  
-  .hands .paper {
-    margin-right: 20px;
-  }
-  
-  .hands .scissors {
-    margin-left: 20px;
-  }
-  
-  .hands .hand {
-    margin-top: 20px;
-    cursor: pointer;
-    transition: all 0.25s;
-  }
-  
-  .hands .hand:hover {
-    transform: translate3d(0px, -8px, 0px);
-  }
+  position: relative;
+  width: 320px;
+  display: flex;
+  z-index: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 30px;
+  margin-top: 50px;
+}
+.hands img {
+  width: 100px;
+  height: 100px;
+  display: block;
+}
+
+.hands .paper {
+  margin-right: 20px;
+}
+
+.hands .scissors {
+  margin-left: 20px;
+}
+
+.hands .hand {
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.hands .hand:hover {
+  transform: translate3d(0px, -8px, 0px);
+}
 
 .game-rules-popup {
   border-radius: 8px;
@@ -119,10 +118,9 @@ body {
   text-align: center;
 }
 
-.game-rules > ul{
-    list-style: none;
-    padding: 0;
-    
+.game-rules > ul {
+  list-style: none;
+  padding: 0;
 }
 
 .game-rules > ul > li {
@@ -130,17 +128,17 @@ body {
 }
 
 .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #0c0c0d;
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding-left: 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #0c0c0d;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
 }
 
 .lower-panel {
@@ -148,7 +146,7 @@ body {
   justify-content: flex-end;
   gap: 0.5rem;
   margin: 1rem;
-  margin-top: auto ;
+  margin-top: auto;
 }
 
 button {
@@ -163,9 +161,6 @@ button {
   padding: 3.5px 12px;
 }
 
-
-
-
 /* Add a green border to the player's selected hand
 .hand.selected {
     border: 2px solid green;
@@ -173,7 +168,7 @@ button {
   }
   
   /* Add a border to the computer's selected hand */
-  /* .hand.computer-selected {
+/* .hand.computer-selected {
     border: 2px solid red; 
     border-radius: 50%;  
 } */
@@ -181,10 +176,10 @@ button {
 /* -------------------------- */
 
 .hand-overlay {
-    position: absolute;
-    top: 80%;
-    transform: translateY(-50%);
-    /* @keyframes  {
+  position: absolute;
+  top: 80%;
+  transform: translateY(-50%);
+  /* @keyframes  {
         0% {
           transform: rotate(0);
         }
@@ -192,24 +187,28 @@ button {
           transform: rotate(360deg);
         }
       } */
-    opacity: 0;
-    transition: all 1s ease-in-out;
-    
-  }
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
 
-  .hand-overlay > img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .hand-overlay.left {
-    left: 0;
-  }
-  
-  .hand-overlay.right {
-    right: 0;
-  }
-  
-  .hand-overlay.show {
-    opacity: 1;
-  }
+.hand-overlay > img {
+  width: 100px;
+  height: 100px;
+}
+
+.hand-overlay.left {
+  left: 0;
+}
+
+.hand-overlay.right {
+  right: 0;
+}
+
+.hand-overlay.show {
+  opacity: 1;
+}
+
+button:hover {
+  background: #fff;
+  color: hsl(214, 47%, 23%);
+}

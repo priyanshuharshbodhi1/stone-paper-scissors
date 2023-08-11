@@ -88,6 +88,7 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * 3)];
 }
 
+getComputerChoice()
 function clearBorders() {
   hands.forEach((hand) =>
     hand.classList.remove("selected", "computer-selected")
@@ -108,7 +109,6 @@ function compareChoices(playerChoice, computerChoice) {
   // Add border to computer's selected hand
   const computerHand = document.querySelector(`.hand.${computerChoice}`);
   computerHand.classList.add("computer-selected");
-
   if (playerChoice === computerChoice) {
     return;
   }
@@ -159,7 +159,7 @@ hands.forEach((hand) => {
   hand.addEventListener("click", () => {
     const playerChoice = hand.classList[1]; // rock, paper, scissors
     const computerChoice = getComputerChoice();
-    compareChoices(playerChoice, computerChoice);
+    // compareChoices(playerChoice, computerChoice);
 
     animateHands(playerChoice, computerChoice);
   });
