@@ -14,6 +14,7 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .score-panel {
@@ -35,30 +36,112 @@ body {
 }
 
 .score {
-    border-radius: 8px;
-    background: #fff;
-    text-align: center;
-    width: 5.6rem;
-    margin: 0.2rem;
-    padding: 0.3rem;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  width: 5.6rem;
+  margin: 0.2rem;
+  padding: 0.3rem;
 }
 
-.score-title{
-    color: #656565;
-font-size: 0.8rem;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-letter-spacing: .1rem;
+.score-title {
+  color: #656565;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.1rem;
 }
 
-.score-number{
-    color: #252525;
-text-align: center;
-font-size: 2.4rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+.score-number {
+  color: #252525;
+  text-align: center;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+
+.hands {
+    position: relative;
+    width: 320px;
+    /* height: 30px; */
+    display: flex;
+    z-index: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 30px;
+    margin-top: 100px;
+  }
+  .hands img {
+    width: 100px;
+    height: 100px;
+    display: block;
+  }
+  
+  .hands .paper {
+    margin-right: 20px;
+  }
+  
+  .hands .scissors {
+    margin-left: 20px;
+  }
+  
+  .hands .hand {
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  
+  .hands .hand:hover {
+    transform: translate3d(0px, -8px, 0px);
+  }
+
+.game-rules-popup {
+  border-radius: 8px;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(130, 129, 132, 0.5);
+  width: 300px;
+  padding: 1rem;
+  color: white;
+  z-index: 1000;
+}
+
+.game-rules {
+  margin-bottom: 20px;
+}
+
+.game-rules > h2 {
+  text-align: center;
+}
+
+.game-rules > ul{
+    list-style: none;
+    padding: 0;
+    
+}
+
+.game-rules > ul > li {
+  margin-bottom: 10px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #0c0c0d;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding-left: 10px;
 }
 
 .lower-panel {
@@ -66,6 +149,7 @@ line-height: normal;
   justify-content: flex-end;
   gap: 0.5rem;
   margin: 1rem;
+  margin-top: auto ;
 }
 
 button {

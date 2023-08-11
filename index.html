@@ -24,31 +24,54 @@
           <div class="score-number">0</div>
         </div>
       </div>
-      <div class="player-choice"></div>
-      <div class="game-rules">
-        <h2>Game Rules</h2>
-        <ul>
-          <li>
-            Rock beats scissors, scissors beat paper, and paper beats rock.
-          </li>
-          <li>
-            Agree ahead of time whether you’ll count off “rock, paper, scissors,
-            shoot” or just “rock, paper, scissors.”
-          </li>
-          <li>
-            Use rock, paper, scissors to settle minor decisions or simply play
-            to pass the time
-          </li>
-          <li>
-            If both players lay down the same hand, each player lays down
-            another hand
-          </li>
-        </ul>
+      <div class="player-choice">
+        <div class="hands">
+          <div class="hand paper">
+            <img src="/assets/Paper.png" onclick="pickUserHand('paper')" />
+          </div>
+          <div class="hand scissors">
+            <img
+              src="/assets/Scissors.png"
+              onclick="pickUserHand('scissors')"
+            />
+          </div>
+          <div class="hand rock">
+            <img src="/assets/Rock.png" onclick="pickUserHand('rock')" />
+          </div>
+        </div>
       </div>
+
+      <div class="game-rules-popup" id="gameRulesPopup">
+        <div class="game-rules">
+          <h2>Game Rules</h2>
+          <br />
+          <ul>
+            <li>
+              1. Rock beats scissors, scissors beat paper, and paper beats rock.
+            </li>
+            <li>
+              2. Agree ahead of time whether you will count off “rock, paper,
+              scissors, shoot” or just “rock, paper, scissors.”
+            </li>
+            <li>
+              3. Use rock, paper, scissors to settle minor decisions or simply
+              play to pass the time
+            </li>
+            <li>
+              4. If both players lay down the same hand, each player lays down
+              another hand
+            </li>
+          </ul>
+          <button class="close-button" id="closeButton">X</button>
+        </div>
+      </div>
+
       <div class="lower-panel">
         <button>NEXT</button>
-        <button>RULES</button>
+        <button id="openRulesButton">RULES</button>
       </div>
     </div>
+
+    <script src="./index.js"></script>
   </body>
 </html>
