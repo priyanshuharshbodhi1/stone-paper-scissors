@@ -127,14 +127,14 @@ function compareChoices(playerChoice, computerChoice) {
 function animateHands(playerChoice, computerChoice) {
   const playerOverlay = document.createElement("div");
   playerOverlay.classList.add("hand-overlay", "left");
-  playerOverlay.innerHTML = `YOUR CHOICE <br> <img src="/assets/${playerChoice}.png" class="hand ${playerChoice}" />`;
+  playerOverlay.innerHTML = `YOUR CHOICE <br> <br> <img src="/assets/${playerChoice}.png" class="hand ${playerChoice}" />`;
   playerOverlay.style.textAlign = "center";
   playerOverlay.style.color = "#fff";
   playerOverlay.style.marginLeft = "1rem";
 
   const computerOverlay = document.createElement("div");
   computerOverlay.classList.add("hand-overlay", "right");
-  computerOverlay.innerHTML = `AI'S CHOICE <br> <img src="/assets/${computerChoice}.png" class="hand ${computerChoice}" />`;
+  computerOverlay.innerHTML = `AI'S CHOICE <br> <br> <img src="/assets/${computerChoice}.png" class="hand ${computerChoice}" />`;
   computerOverlay.style.textAlign = "center";
   computerOverlay.style.color = "#fff";
   computerOverlay.style.marginRight = "1rem";

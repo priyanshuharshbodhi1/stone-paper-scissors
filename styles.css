@@ -33,6 +33,7 @@ body {
   line-height: normal;
   letter-spacing: 0.1rem;
   margin-top: 3px;
+  margin-right: auto;
 }
 
 .score {
@@ -60,6 +61,11 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.player-choice {
+  display: flex;
+  justify-content: center;
 }
 
 .hands {
@@ -212,3 +218,18 @@ button:hover {
   background: #fff;
   color: hsl(214, 47%, 23%);
 }
+
+@media (min-width: 900px) {
+  .main-container {
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+    .main-container {
+      padding-right: 8rem;
+      padding-left: 8rem;
+    }
+  }
+  
