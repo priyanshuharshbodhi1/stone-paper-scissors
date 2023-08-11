@@ -102,6 +102,38 @@ function compareChoices(playerChoice, computerChoice) {
     }
     updateScore();
   }
+
+  function animateHands(playerChoice, computerChoice) {
+    const playerOverlay = document.createElement("div");
+    playerOverlay.classList.add("hand-overlay", "left");
+    playerOverlay.innerHTML = `YOUR CHOICE <br> <img src="/assets/${playerChoice}.png" class="hand ${playerChoice}" />`;
+    playerOverlay.style.textAlign = "center";
+    playerOverlay.style.color = "#fff";
+    playerOverlay.style.marginLeft = "1rem";
+
+    const computerOverlay = document.createElement("div");
+    computerOverlay.classList.add("hand-overlay", "right");
+    computerOverlay.innerHTML = `AI'S CHOICE <br> <img src="/assets/${computerChoice}.png" class="hand ${computerChoice}" />`;
+    computerOverlay.style.textAlign = "center";
+    computerOverlay.style.color = "#fff";
+    computerOverlay.style.marginRight = "1rem";
+
+
+    mainContainer.appendChild(playerOverlay);
+    mainContainer.appendChild(computerOverlay);
+  
+    setTimeout(() => {
+      playerOverlay.classList.add("show");
+      computerOverlay.classList.add("show");
+  
+      setTimeout(() => {
+        mainContainer.removeChild(playerOverlay);
+        mainContainer.removeChild(computerOverlay);
+        compareChoices(playerChoice, computerChoice);
+      }, 1000);
+    }, 10);
+  }
+  
   
 // Add click event listeners to hands
 hands.forEach((hand) => {
@@ -109,6 +141,8 @@ hands.forEach((hand) => {
     const playerChoice = hand.classList[1]; // rock, paper, scissors
     const computerChoice = getComputerChoice();
     compareChoices(playerChoice, computerChoice);
+
+    animateHands(playerChoice, computerChoice);
   });
 });
 
