@@ -66,13 +66,12 @@ body {
 .hands {
     position: relative;
     width: 320px;
-    /* height: 30px; */
     display: flex;
     z-index: 0;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 30px;
-    margin-top: 100px;
+    margin-top: 50px;
   }
   .hands img {
     width: 100px;
@@ -162,4 +161,19 @@ button {
   font-weight: 500;
   line-height: normal;
   padding: 3.5px 12px;
+}
+
+
+
+
+/* Add a green border to the player's selected hand */
+.hand.selected {
+    border: 2px solid green;
+    border-radius: 50%;
+  }
+  
+  /* Add a border to the computer's selected hand */
+  .hand.computer-selected {
+    border: 2px solid red; /* You can adjust the color as needed */
+    border-radius: 50%;  
 }
