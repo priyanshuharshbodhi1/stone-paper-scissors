@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background: #8CC461;
+}
+
+.score-panel {
+    display: flex;
+  border-radius: 0.8125rem;
+  border: 2px solid #fff;
+  background: #1c307800;
+}
+
+.header {
+    color: #FFF;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 0.25rem;
+}
